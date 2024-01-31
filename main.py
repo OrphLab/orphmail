@@ -1,5 +1,6 @@
 import imaplib, email
 
+# This function will return all emails from the inbox
 def getemails(mail, inbox="inbox", search="ALL"):
     print ('Logged in as ' + usr_id) # print login message
     mail.select(inbox) # connect to inbox.
@@ -22,6 +23,7 @@ def getemails(mail, inbox="inbox", search="ALL"):
     mail.close()
     mail.logout()
 
+# This function will return all mailboxes
 def getmailboxes(mail):
     mailboxes =[]
     for part in mail.list()[1]:
@@ -31,18 +33,23 @@ def getmailboxes(mail):
         mailboxes.append(result)
     return mailboxes
 
-host = " "
-usr_id = " "
-usrpass = " "
-port = 993
+# Main function
+if __name__ == "__main__":
+    # Login credentials
+    host = " "
+    usr_id = " "
+    usrpass = " "
+    port = 993
 
-mail = imaplib.IMAP4_SSL(host, port)
-try:
-    mail.login(usr_id, usrpass)
-    mailboxes = getmailboxes(mail)
-    getmailboxchoice = input(f'Choose mailbox from {mailboxes} ')
-    getemails(mail, getmailboxchoice, 'ALL') 
-except imaplib.IMAP4.error:
-    print(imaplib.IMAP4.error)
+    # Connect to the server
+    mail = imaplib.IMAP4_SSL(host, port)
+    try:
+        mail.login(usr_id, usrpass)
+        mailboxes = getmailboxes(mail)
+        getmailboxchoice = input(f'Choose mailbox from {mailboxes} ')
+        getemails(mail, getmailboxchoice, 'ALL') 
+    except imaplib.IMAP4.error:
+        print("Login failed.")
+        print("Check your credentials and try again.")
    
 
