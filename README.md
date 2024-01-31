@@ -22,10 +22,7 @@ The script is divided into two main functions:
 
 1. getemails
 def getemails(mail, inbox="inbox", search="ALL"):
-    # Function to retrieve and display emails from a specified mailbox
-    
-    # ... (rest of the function body)
-   
+
 Connects to the specified mailbox.
 Retrieves email IDs based on the search criteria (default is all emails).
 Iterates through each email ID, fetching and displaying relevant information.
@@ -35,9 +32,7 @@ The first element is typically the response type, and the second element is a di
 
 2. getmailboxes
 def getmailboxes(mail):
-    # Function to retrieve a list of mailboxes available on the server
-    
-    # ... (rest of the function body)
+
 Retrieves a list of mailboxes using the list method.
 Decodes and extracts mailbox names.
 Returns a list of available mailboxes.
