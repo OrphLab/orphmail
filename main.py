@@ -16,10 +16,9 @@ def getemails(mail, inbox="inbox", search="ALL"):
                         print(msg['Subject']) # print the subject field of the message
                         print(msg['Date']) # print the date field of the message
                         print(msg['To']) # print the to field of the message
-                        payload = (msg.get_payload()) # print the message body
+                        payload = (msg.get_payload()) # the message body
                     except TypeError:
                         print("error")
-                        pass
     mail.close()
     mail.logout()
 
@@ -27,10 +26,8 @@ def getmailboxes(mail):
     mailboxes =[]
     for part in mail.list()[1]:
         decode_part=part.decode('utf-8')
-    
         temp_decode = decode_part.split(' ')
         result = ' '.join(temp_decode[-1:])
-        
         mailboxes.append(result)
     return mailboxes
 
